@@ -21,8 +21,8 @@ ProtoBot is modified version of ![BYOB](https://github.com/malwaredllc/byob/ ).
 
 ## Diagram :
 
-![core](https://github.com/protostar0/ProtoBot/blob/main/web-gui/buildyourownbotnet/assets/images/diagram.png)
-The web app includes an in-browser terminal emulator so you can still have direct shell access even when using the web GUI.
+![core](https://github.com/protostar0/ProtoBot/blob/main/web-gui/buildyourownbotnet/assets/images/diagram.png).
 
 
-## vodeo :
+
+## Video :
