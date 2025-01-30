@@ -32,7 +32,7 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           CARD_NUMBER: '4111111111111111'
         run: |
-          echo "====${ secrets.PASSWORD }"
+          echo "====${ PASSWORD }"
 
 
 
