@@ -1,0 +1,54 @@
+name: Test
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install PDM
+        run: pip install pdm
+
+      - name: Configure Git Authentication
+        env:
+          GITHUB_TOKEN: ${{ secrets.ORGANIZATION_TOKEN }}
+        run: |
+          git config --global url."https://${GITHUB_TOKEN}@github.com".insteadOf "https://github.com"
+
+      - name: Install Dependencies
+        run: pip install -e .
+
+      - name: Run Tests
+        run: |
+          python -m unittest tests.test_mock.MockTestNetflixClient.test_success_scenario
+        env:
+          CARD_NUMBER: '4111111111111111'
+          CARD_CVV: 111
+          CARD_MONTH: 01
+          CARD_YEAR: 2040
+          CARD_TYPE: Visa
+          IDENTITY_FIRSTNAME: First name
+          IDENTITY_LASTNAME: Last name
+          ADDRESS_STREET: 1234 STREET
+          ADDRESS_STREET2: '#123'
+          ADDRESS_CITY: New York
+          ADDRESS_STATE: NY
+          ADDRESS_ZIP: 10019
+          ADDRESS_COUNTRY: US
+          IDENTITY_PHONE: (111) 111-1111
+          IDENTITY_EXTERNAL_ID: mock-external-id
+          IDENTITY_ID: "mock-id"
